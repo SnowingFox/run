@@ -1,0 +1,166 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "crates/bun-cli",
+    "crates/bun-core",
+    "crates/bun-parser",
+    "crates/bun-resolver",
+    "crates/bun-bundler",
+    "crates/bun-install",
+    "crates/bun-http",
+    "crates/bun-jsc",
+    "crates/bun-node",
+    "crates/bun-shell",
+    "crates/bun-css",
+    "crates/bun-sql",
+    "crates/bun-test",
+    "crates/bun-ffi",
+    "crates/bun-web",
+    "crates/bun-bake",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.83"
+license = "MIT"
+repository = "https://github.com/user/rust-bun"
+authors = ["Rust-Bun Contributors"]
+
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1.43", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# JSC Integration
+# rusty_jsc = { git = "https://github.com/aspect-dev/aspect.git", branch = "main" }
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# HTTP
+hyper = { version = "1.5", features = ["full"] }
+hyper-util = "0.1"
+http = "1.2"
+http-body-util = "0.1"
+tower = "0.5"
+reqwest = { version = "0.12", features = ["json", "stream"] }
+
+# WebSocket
+tokio-tungstenite = "0.26"
+tungstenite = "0.26"
+
+# Parsing
+logos = "0.15"
+nom = "8"
+
+# CLI
+clap = { version = "4.5", features = ["derive", "env", "wrap_help"] }
+
+# File system
+notify = "8"
+walkdir = "2.5"
+glob = "0.3"
+
+# Compression
+flate2 = "1.0"
+brotli = "7"
+zstd = "0.13"
+
+# Hashing
+sha2 = "0.10"
+blake3 = "1.5"
+md-5 = "0.10"
+xxhash-rust = { version = "0.8", features = ["xxh3", "xxh64"] }
+
+# Crypto
+ring = "0.17"
+rustls = "0.23"
+rustls-pemfile = "2"
+
+# Database
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "mysql", "sqlite"] }
+tokio-postgres = "0.7"
+
+# Memory allocators
+mimalloc = { version = "0.1", features = ["local_dynamic_tls"] }
+
+# Text encoding
+encoding_rs = "0.8"
+
+# URL handling
+url = "2.5"
+
+# Regular expressions
+regex = "1.11"
+
+# Semver
+semver = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Testing
+criterion = "0.5"
+
+# Path handling
+camino = "1.1"
+
+# Binary data
+bytes = "1.9"
+
+# Thread-safe primitives
+parking_lot = "0.12"
+crossbeam = "0.8"
+dashmap = "6"
+
+# FFI
+libffi = "3"
+
+# Memory mapped files
+memmap2 = "0.9"
+
+# Terminal
+crossterm = "0.28"
+colored = "3"
+
+# Source maps
+sourcemap = "9"
+
+# UUID
+uuid = { version = "1.11", features = ["v4", "fast-rng"] }
+
+# Time
+chrono = "0.4"
+
+# Tar/Archive
+tar = "0.4"
+zip = "2"
+
+# TOML
+toml = "0.8"
+
+# INI
+configparser = "3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.bench]
+inherits = "release"
+debug = true

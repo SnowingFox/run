@@ -1,0 +1,70 @@
+name: base
+display_name: Base
+type: base
+description: Base Condigration
+commands:
+  - name: constitution
+    config_path: templates/commands-definitions/constitution.md
+    command_display_name: /adk:constitution
+    category: adk
+  - name: specify
+    config_path: templates/commands-definitions/specify.md
+    command_display_name: /adk:specify
+    category: adk
+  - name: clarify
+    config_path: templates/commands-definitions/clarify.md
+    command_display_name: /adk:clarify
+    category: adk
+  - name: tasks
+    config_path: templates/commands-definitions/tasks.md
+    command_display_name: /adk:tasks
+    category: adk
+  - name: implement
+    config_path: templates/commands-definitions/implement.md
+    command_display_name: /adk:implement
+    category: adk
+  - name: analyze
+    config_path: templates/commands-definitions/analyze.md
+    command_display_name: /adk:analyze
+    category: adk
+  - name: checklist
+    config_path: templates/commands-definitions/checklist.md
+    command_display_name: /adk:checklist
+    category: adk
+  - name: archive
+    config_path: templates/commands-definitions/archive.md
+    command_display_name: /adk:archive
+    category: adk
+  - name: plan
+    config_path: templates/commands-definitions/plan.md
+    command_display_name: /adk:plan
+    category: adk
+  - name: erd
+    config_path: templates/commands-definitions/erd.md
+    command_display_name: /adk:erd
+    category: adk
+  - name: commit
+    config_path: templates/commands-definitions/commit.md
+    command_display_name: /adk:commit
+    category: adk
+  - name: apply
+    config_path: templates/commands-definitions/apply.md
+    command_display_name: /adkl:apply
+    category: adkl
+  - name: proposal
+    config_path: templates/commands-definitions/proposal.md
+    command_display_name: /adkl:proposal
+    category: adkl
+  - name: revise
+    config_path: templates/commands-definitions/revise.md
+    command_display_name: /adkl:revise
+    category: adkl
+mcps:
+  - name: lark-docs
+    config_path: mcp/lark_docs.yaml
+    mcp_display_name: lark-docs
+  - name: tiksearch
+    config_path: mcp/tika_search.yaml
+    mcp_display_name: tiksearch
+references: []
+subagents: []

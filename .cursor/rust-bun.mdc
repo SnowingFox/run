@@ -1,0 +1,203 @@
+---
+alwaysApply: true
+---
+
+# Rust-Bun Project Guidelines
+
+## Project Overview
+
+Rust-Bun is a 1:1 Rust implementation of Bun - the all-in-one JavaScript runtime & toolkit. This project aims to replicate all of Bun's functionality using Rust, following the highest standards of Rust development.
+
+## Core Architecture
+
+The project is structured to mirror Bun's architecture:
+
+- **Runtime Core**: CLI, entry point, memory allocators, environment management
+- **JavaScript Engine Integration**: Using `rusty_jsc` for JavaScriptCore bindings
+- **Parser/Transpiler**: JavaScript/TypeScript lexer, parser, printer, sourcemaps
+- **Module Resolution**: Node.js-compatible module resolution system
+- **Bundler**: Tree-shaking, CSS/HTML processing, code splitting
+- **Package Manager**: npm-compatible package management with lockfiles
+- **HTTP/WebSocket**: High-performance server and client implementations
+- **Node.js Compatibility**: Full implementation of Node.js core modules
+- **Shell**: Cross-platform shell with builtins
+- **Test Runner**: Jest-compatible test framework
+- **CSS Parser**: Full CSS parsing and processing
+- **Database Clients**: PostgreSQL, MySQL, SQLite, Redis, S3
+
+## Development Workflow
+
+### Module Implementation Workflow
+
+1. Read corresponding Bun source code and tests thoroughly
+2. Create detailed spec document in `specs/<module>/SPEC.md`
+3. Create task list in `specs/<module>/TASKS.md`
+4. Create implementation plan in `specs/<module>/PLAN.md`
+5. Implement with comprehensive unit tests
+6. Verify behavior matches Bun's tests
+
+### Spec Document Requirements
+
+Each spec must include:
+
+- **Overview**: What the module does
+- **Bun Reference**: Path to corresponding Bun source code
+- **Public API**: All public functions/structs/traits
+- **Behavior Specifications**: Detailed behavior descriptions
+- **Edge Cases**: Known edge cases and how to handle them
+- **Test Requirements**: What tests must be written
+
+### Task Document Requirements
+
+Each task list must include:
+
+- **Prerequisites**: Dependencies on other modules
+- **Implementation Tasks**: Ordered list of implementation steps
+- **Test Tasks**: Corresponding test implementation
+- **Integration Tasks**: How it integrates with other modules
+
+### Plan Document Requirements
+
+Each plan must include:
+
+- **Dependencies**: Crates and internal modules needed
+- **Architecture**: Struct/Trait hierarchy
+- **Implementation Order**: Which parts to build first
+- **Risk Analysis**: Potential challenges and mitigations
+
+## Rust Standards (from rust.mdc)
+
+### Key Principles
+
+- Write clear, concise, and idiomatic Rust code
+- Use async programming with `tokio` for concurrency
+- Prioritize modularity, clean code organization, and efficient resource management
+- Use expressive variable names (e.g., `is_ready`, `has_data`)
+- Adhere to naming conventions: snake_case for variables/functions, PascalCase for types/structs
+- Avoid code duplication; use functions and modules for reusable logic
+- Write code with safety, concurrency, and performance in mind
+
+### Async Programming
+
+- Use `tokio` as the async runtime
+- Use `async fn` syntax for async functions
+- Use `tokio::spawn` for task spawning
+- Use `tokio::select!` for managing multiple async tasks
+- Implement timeouts, retries, and backoff strategies
+
+### Error Handling
+
+- Use `Result` and `Option` types consistently
+- Use `?` operator for error propagation
+- Use `thiserror` for library errors, `anyhow` for application errors
+- Handle errors early, return errors where appropriate
+
+### Testing
+
+- Use `#[tokio::test]` for async tests
+- Use `tokio::time::pause` for time-dependent tests
+- Implement integration tests for async behavior
+- Use mocks and fakes for external dependencies
+- Aim for >90% code coverage
+
+### Performance
+
+- Minimize async overhead
+- Avoid blocking operations in async functions
+- Use `tokio::task::spawn_blocking` for CPU-intensive work
+- Optimize data structures for async use
+
+## Project Structure
+
+```
+rust-bun/
+├── Cargo.toml                    # Workspace root
+├── README.md                     # Project documentation
+├── specs/                        # Specification documents
+│   ├── core/                     # Core runtime specs
+│   ├── parser/                   # JavaScript parser specs
+│   ├── resolver/                 # Module resolver specs
+│   ├── bundler/                  # Bundler specs
+│   ├── install/                  # Package manager specs
+│   ├── http/                     # HTTP/WebSocket specs
+│   ├── jsc/                      # JSC bindings specs
+│   ├── node/                     # Node.js compat specs
+│   ├── shell/                    # Shell specs
+│   ├── css/                      # CSS parser specs
+│   ├── sql/                      # SQL clients specs
+│   ├── test/                     # Test runner specs
+│   ├── ffi/                      # FFI specs
+│   ├── web/                      # Web APIs specs
+│   └── bake/                     # SSR framework specs
+├── crates/                       # Rust crates
+│   ├── bun-cli/                  # CLI entry point
+│   ├── bun-core/                 # Core runtime
+│   ├── bun-parser/               # JS/TS parser
+│   ├── bun-resolver/             # Module resolver
+│   ├── bun-bundler/              # Bundler
+│   ├── bun-install/              # Package manager
+│   ├── bun-http/                 # HTTP server/client
+│   ├── bun-jsc/                  # JSC bindings
+│   ├── bun-node/                 # Node.js compat
+│   ├── bun-shell/                # Shell
+│   ├── bun-css/                  # CSS parser
+│   ├── bun-sql/                  # SQL clients
+│   ├── bun-test/                 # Test runner
+│   ├── bun-ffi/                  # FFI
+│   ├── bun-web/                  # Web APIs
+│   └── bun-bake/                 # SSR framework
+└── tests/                        # Integration tests
+```
+
+## JSC Integration with rusty_jsc
+
+Use `rusty_jsc` crate for JavaScriptCore bindings:
+
+- JSValue, JSContext, JSObject management
+- Function callbacks from JS to Rust
+- Class definitions and prototypes
+- Exception handling
+- Memory management with proper prevent/allow bridging
+
+## Quality Standards
+
+### Code Quality
+
+- All public APIs must have documentation
+- All functions must have unit tests
+- Use `clippy` with strict lints
+- Format with `rustfmt`
+- No `unsafe` code without clear justification and safety proof
+
+### Performance
+
+- Benchmark critical paths
+- Profile memory usage
+- Compare performance with Bun
+- Document any performance gaps
+
+### Compatibility
+
+- Test against Bun's test suite where applicable
+- Ensure API compatibility with Bun
+- Document any intentional deviations
+
+## References
+
+- Bun Source: `../bun-main/src/`
+- Bun Docs: `../bun-main/docs/`
+- Bun Tests: `../bun-main/test/`
+- rusty_jsc: https://github.com/aspect-dev/aspect/tree/main/aspect-build/aspect-wasm/aspect-wasm-jsc
+
+## Next Steps After Module Completion
+
+1. Run all tests: `cargo test --all`
+2. Run clippy: `cargo clippy --all -- -D warnings`
+3. Run benchmarks: `cargo bench`
+4. Update CHANGELOG
+5. Create PR with spec/tasks/plan references
+
+## Before implement a module, you need to read the following steps:
+
+1. Read bun specs.md & tasks.md & plan.md files
+2. Read bun source code

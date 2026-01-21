@@ -1,0 +1,35 @@
+# TTADK Validation Rules
+# TikTok Engineering Standards for Spec/Plan/Tasks Documents
+
+rules:
+  - id: "SPEC-001"
+    category: "quality"
+    severity: "error"
+    description: "Spec must include Problem Statement section"
+    target: "spec"
+    check_type: "section_exists"
+    expression: "## Problem Statement"
+
+  - id: "SPEC-002"
+    category: "quality"
+    severity: "error"
+    description: "Spec must include Requirements section"
+    target: "spec"
+    check_type: "section_exists"
+    expression: "## Requirements"
+
+  - id: "PLAN-001"
+    category: "quality"
+    severity: "error"
+    description: "Plan must include Architecture section"
+    target: "plan"
+    check_type: "section_exists"
+    expression: "## Architecture"
+
+  - id: "SEC-001"
+    category: "security"
+    severity: "error"
+    description: "No hardcoded secrets allowed"
+    target: "spec"
+    check_type: "pattern_match"
+    expression: "password|secret|api[_-]?key"

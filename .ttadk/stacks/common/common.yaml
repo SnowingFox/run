@@ -1,0 +1,24 @@
+name: common
+display_name: Common
+type: common
+description: general-purpose projects without specific TikTok framework requirements. Suitable for experiments, prototypes, open-source tools, and language-agnostic development.
+commands: []
+mcps: []
+references:
+  - file_path: stacks/common/code_quality.md
+    description: Code Quality Guidelines
+  - file_path: stacks/common/dependency_managment.md
+    description: Dependency Management Guidelines
+  - file_path: stacks/common/security.md
+    description: Security Guidelines
+  - file_path: stacks/common/testing.md
+    description: Testing Guidelines
+  - file_path: stacks/common/documentation.md
+    description: Documentation Guidelines
+  - file_path: stacks/common/version_control.md
+    description: Version Control Guidelines
+  - file_path: stacks/common/error_handling.md
+    description: Error Handling Guidelines
+  - file_path: stacks/common/performance.md
+    description: Performance Guidelines
+subagents: []

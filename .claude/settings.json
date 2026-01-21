@@ -1,0 +1,20 @@
+{
+  "env": {},
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Edit(*)",
+      "Bash(git:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Bash(node .ttadk/scripts/*.js:*)",
+      "WebFetch(domain:*)"
+    ],
+    "deny": [
+      "Read(./.env)"
+    ],
+    "ask": [
+      "Bash(git push:*)"
+    ]
+  }
+}

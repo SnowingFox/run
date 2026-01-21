@@ -1,0 +1,241 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-21T14:48:22.076Z",
+  "selectedStack": "all",
+  "selectedStacks": [
+    "base",
+    "common"
+  ],
+  "aiTool": "claude",
+  "stacks": {
+    "base": {
+      "name": "base",
+      "display_name": "Base",
+      "type": "base",
+      "description": "Base Condigration",
+      "commands": [
+        {
+          "name": "constitution",
+          "config_path": "templates/commands-definitions/constitution.md",
+          "command_display_name": "/adk:constitution",
+          "category": "adk"
+        },
+        {
+          "name": "specify",
+          "config_path": "templates/commands-definitions/specify.md",
+          "command_display_name": "/adk:specify",
+          "category": "adk"
+        },
+        {
+          "name": "clarify",
+          "config_path": "templates/commands-definitions/clarify.md",
+          "command_display_name": "/adk:clarify",
+          "category": "adk"
+        },
+        {
+          "name": "tasks",
+          "config_path": "templates/commands-definitions/tasks.md",
+          "command_display_name": "/adk:tasks",
+          "category": "adk"
+        },
+        {
+          "name": "implement",
+          "config_path": "templates/commands-definitions/implement.md",
+          "command_display_name": "/adk:implement",
+          "category": "adk"
+        },
+        {
+          "name": "analyze",
+          "config_path": "templates/commands-definitions/analyze.md",
+          "command_display_name": "/adk:analyze",
+          "category": "adk"
+        },
+        {
+          "name": "checklist",
+          "config_path": "templates/commands-definitions/checklist.md",
+          "command_display_name": "/adk:checklist",
+          "category": "adk"
+        },
+        {
+          "name": "archive",
+          "config_path": "templates/commands-definitions/archive.md",
+          "command_display_name": "/adk:archive",
+          "category": "adk"
+        },
+        {
+          "name": "plan",
+          "config_path": "templates/commands-definitions/plan.md",
+          "command_display_name": "/adk:plan",
+          "category": "adk"
+        },
+        {
+          "name": "erd",
+          "config_path": "templates/commands-definitions/erd.md",
+          "command_display_name": "/adk:erd",
+          "category": "adk"
+        },
+        {
+          "name": "commit",
+          "config_path": "templates/commands-definitions/commit.md",
+          "command_display_name": "/adk:commit",
+          "category": "adk"
+        },
+        {
+          "name": "apply",
+          "config_path": "templates/commands-definitions/apply.md",
+          "command_display_name": "/adkl:apply",
+          "category": "adkl"
+        },
+        {
+          "name": "proposal",
+          "config_path": "templates/commands-definitions/proposal.md",
+          "command_display_name": "/adkl:proposal",
+          "category": "adkl"
+        },
+        {
+          "name": "revise",
+          "config_path": "templates/commands-definitions/revise.md",
+          "command_display_name": "/adkl:revise",
+          "category": "adkl"
+        }
+      ],
+      "subagents": [],
+      "mcps": [
+        {
+          "name": "lark-docs",
+          "config_path": "mcp/lark_docs.yaml",
+          "mcp_display_name": "lark-docs"
+        },
+        {
+          "name": "tiksearch",
+          "config_path": "mcp/tika_search.yaml",
+          "mcp_display_name": "tiksearch"
+        }
+      ],
+      "references": []
+    },
+    "common": {
+      "name": "common",
+      "display_name": "Common",
+      "type": "common",
+      "description": "general-purpose projects without specific TikTok framework requirements. Suitable for experiments, prototypes, open-source tools, and language-agnostic development.",
+      "commands": [],
+      "subagents": [],
+      "mcps": [],
+      "references": [
+        {
+          "file_path": "stacks/common/code_quality.md",
+          "description": "Code Quality Guidelines"
+        },
+        {
+          "file_path": "stacks/common/dependency_managment.md",
+          "description": "Dependency Management Guidelines"
+        },
+        {
+          "file_path": "stacks/common/security.md",
+          "description": "Security Guidelines"
+        },
+        {
+          "file_path": "stacks/common/testing.md",
+          "description": "Testing Guidelines"
+        },
+        {
+          "file_path": "stacks/common/documentation.md",
+          "description": "Documentation Guidelines"
+        },
+        {
+          "file_path": "stacks/common/version_control.md",
+          "description": "Version Control Guidelines"
+        },
+        {
+          "file_path": "stacks/common/error_handling.md",
+          "description": "Error Handling Guidelines"
+        },
+        {
+          "file_path": "stacks/common/performance.md",
+          "description": "Performance Guidelines"
+        }
+      ]
+    }
+  },
+  "injectedDependencies": {
+    "commands": [
+      "/adk:constitution",
+      "/adk:specify",
+      "/adk:clarify",
+      "/adk:tasks",
+      "/adk:implement",
+      "/adk:analyze",
+      "/adk:checklist",
+      "/adk:archive",
+      "/adk:plan",
+      "/adk:erd",
+      "/adk:commit",
+      "/adkl:apply",
+      "/adkl:proposal",
+      "/adkl:revise"
+    ],
+    "mcps": [
+      "lark-docs",
+      "tiksearch"
+    ],
+    "subagents": [],
+    "skills": [],
+    "references": [
+      "stacks/common/code_quality.md",
+      "stacks/common/dependency_managment.md",
+      "stacks/common/security.md",
+      "stacks/common/testing.md",
+      "stacks/common/documentation.md",
+      "stacks/common/version_control.md",
+      "stacks/common/error_handling.md",
+      "stacks/common/performance.md"
+    ]
+  },
+  "dependencyTree": {
+    "root": {
+      "name": "base",
+      "displayName": "Base",
+      "type": "base",
+      "children": [
+        {
+          "name": "common",
+          "displayName": "Common",
+          "type": "common",
+          "children": [],
+          "dependencies": {
+            "commands": 0,
+            "mcps": 0,
+            "subagents": 0,
+            "references": 8
+          }
+        }
+      ],
+      "dependencies": {
+        "commands": 14,
+        "mcps": 2,
+        "subagents": 0,
+        "references": 0
+      }
+    },
+    "children": [
+      {
+        "name": "common",
+        "displayName": "Common",
+        "type": "common",
+        "children": [],
+        "dependencies": {
+          "commands": 0,
+          "mcps": 0,
+          "subagents": 0,
+          "references": 8
+        }
+      }
+    ],
+    "metadata": {
+      "createdAt": "2026-01-21T14:48:22.076Z",
+      "stackCategory": "common",
+      "totalStacks": 2
+    }
+  }
+}

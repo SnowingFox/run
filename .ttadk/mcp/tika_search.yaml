@@ -1,0 +1,14 @@
+name: tiksearch
+command: bunx
+args:
+  - "--registry=http://bnpm.byted.org/"
+  - "@tiktok-mcp/tiksearch"
+env:
+  NPM_CONFIG_REGISTRY: "http://bnpm.byted.org/"
+description: "Acquire knowledge under the TikTok R&D system"
+version: "1.0.0"
+
+# Optional: npm package installation config
+npm_install:
+  package_name: "@tiktok-mcp/tiksearch"
+  registry: "http://bnpm.byted.org/"
